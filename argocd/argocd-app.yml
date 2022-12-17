@@ -18,3 +18,63 @@ spec:
     automated:
       selfHeal: true
       prune: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: frontend-staging
+  namespace: argocd
+spec:
+  destination:
+    namespace: staging
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://github.com/alexkainzinger/jku-cloud-native.git
+    path: gitops/staging/frontend
+    targetRevision: HEAD
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: node-app-staging
+  namespace: argocd
+spec:
+  destination:
+    namespace: staging
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://github.com/alexkainzinger/jku-cloud-native.git
+    path: gitops/staging/node-app
+    targetRevision: HEAD
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: frontend-production
+  namespace: argocd
+spec:
+  destination:
+    namespace: production
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://github.com/alexkainzinger/jku-cloud-native.git
+    path: gitops/production/frontend
+    targetRevision: HEAD
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: node-app-production
+  namespace: argocd
+spec:
+  destination:
+    namespace: production
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://github.com/alexkainzinger/jku-cloud-native.git
+    path: gitops/production/node-app
+    targetRevision: HEAD
