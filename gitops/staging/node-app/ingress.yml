@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: node-app
+  namespace: staging
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
+    kubernetes.io/ingress.class: traefik
+    traefik.ingress.kubernetes.io/router.middlewares: staging-node-app-strip-prefix@kubernetescrd
+spec:
+  rules:
+    - host: staging.localhost
+      http:
+        paths:
+          - path: /country
+            pathType: Prefix
+            backend:
+              service:
+                name: node-app
+                port:
+                  number: 8081

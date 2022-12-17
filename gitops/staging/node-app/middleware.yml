@@ -1,0 +1,10 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: node-app-strip-prefix
+  namespace: staging
+spec:
+  stripPrefix:
+    forceSlash: false
+    prefixes:
+      - /country
