@@ -16,7 +16,7 @@ jobs:
       - id: set_date
         run: echo "date=$(date +'%Y%m%d-%H%M')" >> $GITHUB_OUTPUT
       - id: check_environment
-        run: echo "environment=$([[ $GITHUB_REF_NAME -eq "main" ]] && echo "production" || echo $GITHUB_REF_NAME >&2)" >> $GITHUB_OUTPUT
+        run: echo "environment=$([[ $GITHUB_REF_NAME == "main" ]] && echo "production" || echo $GITHUB_REF_NAME)" >> $GITHUB_OUTPUT
 
   build-frontend:
     runs-on: ubuntu-latest
