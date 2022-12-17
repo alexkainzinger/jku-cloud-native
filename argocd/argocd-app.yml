@@ -32,7 +32,7 @@ spec:
   source:
     repoURL: https://github.com/alexkainzinger/jku-cloud-native.git
     path: gitops/staging/frontend
-    targetRevision: HEAD
+    targetRevision: staging
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -47,7 +47,7 @@ spec:
   source:
     repoURL: https://github.com/alexkainzinger/jku-cloud-native.git
     path: gitops/staging/node-app
-    targetRevision: HEAD
+    targetRevision: staging
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
