@@ -30,7 +30,7 @@ const LandingPage = () => {
       <CoronaDataModal open={open} setOpen={setOpen} />
       <div className="flex flex-col h-screen bg-gray-50">
         <div className="my-auto">
-          <img src="src/assets/medical-icon.svg" className="mx-auto my-4 sm:my-0" width={375} />
+          <img src="/medical-icon.svg" className="mx-auto my-4 sm:my-0" width={375} />
           <div className="relative sm:py-12">
             <div aria-hidden="true" className="hidden sm:block">
               <div className="absolute inset-y-0 left-0 w-1/2 bg-gray-50 rounded-r-3xl" />
