@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-deployment
+  name: frontend
   namespace: staging
 spec:
   selector:
@@ -14,7 +14,7 @@ spec:
         app: frontend
     spec:
       containers:
-      - name: frontend
-        image: alexkainzinger/jku-cloud-native-frontend
-        ports:
-        - containerPort: 80
+        - name: frontend
+          image: alexkainzinger/jku-cloud-native-frontend
+          ports:
+            - containerPort: 80
