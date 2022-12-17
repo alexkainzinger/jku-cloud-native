@@ -33,6 +33,11 @@ spec:
     repoURL: https://github.com/alexkainzinger/jku-cloud-native.git
     path: gitops/staging/frontend
     targetRevision: staging
+
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -48,6 +53,11 @@ spec:
     repoURL: https://github.com/alexkainzinger/jku-cloud-native.git
     path: gitops/staging/node-app
     targetRevision: staging
+
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
