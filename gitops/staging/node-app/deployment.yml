@@ -14,7 +14,7 @@ spec:
         app: node-app
     spec:
       containers:
-      - name: node-app
-        image: alexkainzinger/jku-cloud-native-node-app
-        ports:
-        - containerPort: 8081
+        - name: node-app
+          image: alexkainzinger/jku-cloud-native-node-app
+          ports:
+            - containerPort: 8081
