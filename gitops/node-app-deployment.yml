@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-deployment
+  namespace: staging
+spec:
+  selector:
+    matchLabels:
+      app: node-app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+      - name: node-app
+        image: alexkainzinger/jku-cloud-native-node-app
+        ports:
+        - containerPort: 8081
