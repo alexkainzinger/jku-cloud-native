@@ -1,10 +1,9 @@
 import React, { createContext, useContext, useState } from "react"
 
-import { CoronaParams, CoronaData } from "../types/corona-backend"
-import { CountryData } from "../types/country-backend"
+import { type CoronaData, type CountryData } from "../types"
 import { useNotification } from "./NotificationProvider"
 
-const CORONA_API_URL = "/corona/api" //  http://localhost:8080/api
+const CORONA_API_URL = "https://api.covid19api.com/country"
 const COUNTRY_API_URL = "/country/api" // http://localhost:8081/api/all
 
 const useApiProvider = () => {
@@ -15,14 +14,10 @@ const useApiProvider = () => {
   const [countries, setCountries] = useState<CountryData[]>([])
   const [coronaData, setCoronaData] = useState<CoronaData[]>([])
 
-  const fetchCorona = async (country: string, params?: CoronaParams) => {
-    setLoadingCorona(true)
-
+  const fetchCorona = async (country: string) => {
     try {
-      const queryParams = new URLSearchParams(params)
-      const response = await fetch(
-        `${CORONA_API_URL}/${country.toLowerCase()}${queryParams.values.length ? `?${queryParams.toString()}` : ""}`
-      )
+      setLoadingCorona(true)
+      const response = await fetch(`${CORONA_API_URL}/${country.toLowerCase()}`)
 
       if (!response.ok) {
         throw new Error(response.statusText)
@@ -39,9 +34,8 @@ const useApiProvider = () => {
   }
 
   const fetchCountries = async () => {
-    setLoadingCountries(true)
-
     try {
+      setLoadingCountries(true)
       const response = await fetch(`${COUNTRY_API_URL}/all`)
 
       if (!response.ok) {
