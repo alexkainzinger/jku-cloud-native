@@ -1,7 +1,7 @@
 import React, { Fragment } from "react"
 import { Transition } from "@headlessui/react"
 import { XMarkIcon, CheckCircleIcon, ExclamationCircleIcon } from "@heroicons/react/24/outline"
-import { StatusNotification } from "../../types/common"
+import { type StatusNotification } from "../../types"
 
 const NotificationElement: React.FC<StatusNotification & { hide: () => void }> = ({ type, message, hide }) => {
   const getNotificationIcon = () => {

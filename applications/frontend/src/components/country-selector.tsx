@@ -4,7 +4,7 @@ import { FixedSizeList as List, areEqual } from "react-window"
 import { Listbox, Transition } from "@headlessui/react"
 import { ChevronUpDownIcon, CheckIcon } from "@heroicons/react/24/outline"
 import { classNames } from "../utils/common.util"
-import { CountryData } from "../types/country-backend"
+import { type CountryData } from "../types"
 
 interface ICountrySelector {
   countries: CountryData[]

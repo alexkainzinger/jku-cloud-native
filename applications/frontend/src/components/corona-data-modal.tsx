@@ -9,7 +9,7 @@ import { FixedSizeList as List, areEqual } from "react-window"
 import Spinner from "./common/spinner"
 import { useApi } from "../providers/ApiProvider"
 import { classNames } from "../utils/common.util"
-import { CoronaData, CoronaProperty } from "../types/corona-backend"
+import { type CoronaData, type CoronaProperty } from "../types"
 
 interface ICoronaDataModal {
   open: boolean
@@ -41,7 +41,7 @@ const CoronaDataModal: React.FC<ICoronaDataModal> = ({ open, setOpen }) => {
   }, [])
 
   const labels = useCallback(() => {
-    return [...new Set(coronaData.map((c) => formatDate(c.date)))]
+    return [...new Set(coronaData.map((c) => formatDate(c.Date)))]
   }, [coronaData])
 
   const calculateDateForProp = useCallback(
@@ -49,10 +49,10 @@ const CoronaDataModal: React.FC<ICoronaDataModal> = ({ open, setOpen }) => {
       const data = []
       let index = 0
       let count = 0
-      let startDate = formatDate(coronaData[0].date)
+      let startDate = formatDate(coronaData[0].Date)
 
       for (const point of coronaData) {
-        const pointDate = formatDate(point.date)
+        const pointDate = formatDate(point.Date)
 
         if (pointDate === startDate) {
           index++
@@ -79,7 +79,7 @@ const CoronaDataModal: React.FC<ICoronaDataModal> = ({ open, setOpen }) => {
   const deathsDataset = useCallback(() => {
     return {
       label: "Deaths",
-      data: calculateDateForProp("deaths"),
+      data: calculateDateForProp("Deaths"),
       borderColor: "rgb(255, 99, 132)",
       backgroundColor: "rgba(255, 99, 132, 0.5)"
     }
@@ -88,7 +88,7 @@ const CoronaDataModal: React.FC<ICoronaDataModal> = ({ open, setOpen }) => {
   const activeDataset = useCallback(() => {
     return {
       label: "Active",
-      data: calculateDateForProp("active"),
+      data: calculateDateForProp("Active"),
       borderColor: "rgb(53, 162, 235)",
       backgroundColor: "rgba(53, 162, 235, 0.5)"
     }
@@ -97,7 +97,7 @@ const CoronaDataModal: React.FC<ICoronaDataModal> = ({ open, setOpen }) => {
   const confirmedDataset = useCallback(() => {
     return {
       label: "Confirmed",
-      data: calculateDateForProp("confirmed"),
+      data: calculateDateForProp("Confirmed"),
       borderColor: "rgb(0, 205, 101)",
       backgroundColor: "rgba(0, 205, 101, 0.5)"
     }
@@ -247,12 +247,12 @@ const TableEntry = memo(({ data, index, style }: { data: CoronaData[]; index: nu
       className={classNames("table table-fixed w-full", index % 2 === 0 ? "bg-white" : "bg-gray-50")}
     >
       <td className="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
-        {new Date(d.date).toLocaleDateString("de-DE")}
+        {new Date(d.Date).toLocaleDateString("de-DE")}
       </td>
-      <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{d.active}</td>
-      <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{d.deaths}</td>
-      <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{d.confirmed}</td>
-      <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{d.recovered}</td>
+      <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{d.Active}</td>
+      <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{d.Deaths}</td>
+      <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{d.Confirmed}</td>
+      <td className="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">{d.Recovered}</td>
     </tr>
   )
 }, areEqual)

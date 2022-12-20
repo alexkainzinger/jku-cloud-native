@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from "react"
 
 import NotificationElement from "../components/common/notification-element"
-import { StatusNotification } from "../types/common"
+import { type StatusNotification } from "../types"
 
 const useProvideNotification = () => {
   const [notifications, setNotifications] = useState<StatusNotification[]>([])
@@ -46,9 +46,9 @@ export const NotificationProvider = (props: { children: React.ReactNode }): JSX.
 
       <div
         aria-live="assertive"
-        className="fixed z-20 inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start"
+        className="fixed inset-0 z-20 flex items-end px-4 py-6 pointer-events-none sm:p-6 sm:items-start"
       >
-        <div className="w-full flex flex-col items-center space-y-4 sm:items-end">
+        <div className="flex flex-col items-center w-full space-y-4 sm:items-end">
           {value.notifications.map((notification, i) => (
             <NotificationElement
               key={i}
