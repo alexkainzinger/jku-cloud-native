@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: alexkainzinger/jku-cloud-native-frontend:production-20221217-2106
+          image: alexkainzinger/jku-cloud-native-frontend:production-20221220-2030
           ports:
             - containerPort: 80
