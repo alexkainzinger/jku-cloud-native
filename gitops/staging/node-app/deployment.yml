@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: node-app
-          image: alexkainzinger/jku-cloud-native-node-app:staging-20221220-2025
+          image: alexkainzinger/jku-cloud-native-node-app:staging-20230105-1416
           ports:
             - containerPort: 8081
